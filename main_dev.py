@@ -3,19 +3,15 @@
 import os
 import asyncio
 import aiohttp
-#конфиг бота
-# weatherapi = "...." Api key open weather map 
-# token1 = "...." botfather api telegram... Не передовайте этот  ключ посторонему пользователю, если бот  нарушит ToC,то бота заблокируют а потом владельца ключа заблокируют и заморпозят аккаунт.
-
 from aiogram import Bot, Dispatcher,F, Router
 from aiogram.types import Message
 from aiogram.filters import CommandStart
 router = Router()
-weatherapi2 = "dbc7861081ee65ac6ab95dbc10496645"
-token1 = "8795708345:AAEw6bJhkWnsLpPec-wQoAChzWCyygT9P5U"
+weatherapi = "..."
+token1 = "..."
 #получение погоды через апи опен веатхер и aiohttp
 async def get_weather(city: str) -> str:
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={weatherapi2}&units=metric&lang=ru"
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={weatherapi}&units=metric&lang=ru"
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as response:
             if response.status == 200:
@@ -35,11 +31,11 @@ async def get_weather(city: str) -> str:
             
             elif response.status == 401:
                 return "Ключ невалидный бро..."
-            return f"Город не найден {response.status})"
+            return f"Город не найден {response.status}"
             
 @router.message(CommandStart())
 async def start(message: Message):
-    "привет далбоеб... веди город даун бездарный"
+    "привет dtlb ujhjl"
 
 @router.message(F.text)
 async def req1(message: Message):
